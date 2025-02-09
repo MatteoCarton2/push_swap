@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/09 17:05:55 by mcarton          ###   ########.fr       */
+/*   Created: 2024/10/08 08:13:27 by mcarton           #+#    #+#             */
+/*   Updated: 2024/10/19 16:16:08 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_bzero(void *s, size_t n)
 {
-    size_t i;
+	size_t			i;
+	unsigned char	*tmp;
 
-    if (argc < 2)
-        return (0);
-    i = 1;
-    while (i < (size_t)argc)
-    {
-        if (is_valid_args(argv[i]) == 0)
-        {
-             printf("❌");
-            return (0);
-        }
-        i ++;
-    }
-    if (has_duplicates(argc, argv) == 1)
-        return (0);
-    printf("✅");
-	return (0);
+	i = 0;
+	tmp = (unsigned char *)s;
+	while (i < n)
+	{
+		tmp[i] = 0;
+		i++;
+	}
 }

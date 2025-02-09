@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/09 17:05:55 by mcarton          ###   ########.fr       */
+/*   Created: 2024/10/08 08:22:47 by mcarton           #+#    #+#             */
+/*   Updated: 2024/10/19 16:42:13 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-    size_t i;
+	size_t				i;
+	unsigned char		*dest_tmp;
+	const unsigned char	*src_tmp;
 
-    if (argc < 2)
-        return (0);
-    i = 1;
-    while (i < (size_t)argc)
-    {
-        if (is_valid_args(argv[i]) == 0)
-        {
-             printf("❌");
-            return (0);
-        }
-        i ++;
-    }
-    if (has_duplicates(argc, argv) == 1)
-        return (0);
-    printf("✅");
-	return (0);
+	if (!dest && !src)
+		return (NULL);
+	i = 0;
+	dest_tmp = (unsigned char *)dest;
+	src_tmp = (const unsigned char *)src;
+	while (i < n)
+	{
+		dest_tmp[i] = src_tmp[i];
+		i++;
+	}
+	return (dest);
 }

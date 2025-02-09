@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/09 17:05:55 by mcarton          ###   ########.fr       */
+/*   Created: 2024/10/18 17:30:02 by mcarton           #+#    #+#             */
+/*   Updated: 2024/10/18 18:00:14 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstnew(void *content)
 {
-    size_t i;
+	t_list	*element;
 
-    if (argc < 2)
-        return (0);
-    i = 1;
-    while (i < (size_t)argc)
-    {
-        if (is_valid_args(argv[i]) == 0)
-        {
-             printf("❌");
-            return (0);
-        }
-        i ++;
-    }
-    if (has_duplicates(argc, argv) == 1)
-        return (0);
-    printf("✅");
+	element = malloc(sizeof(t_list));
+	if (!element)
+		return (NULL);
+	element->content = content;
+	element->next = NULL;
+	return (element);
+}
+/*
+int	main(void)
+{
+	t_list *str = ft_lstnew("Salut");
+    
+	printf("Contenu = %s\nPointeur = %p\n", (char *)str->content, str->next);
+	free(str);
 	return (0);
 }
+*/

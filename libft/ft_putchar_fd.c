@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/09 17:05:55 by mcarton          ###   ########.fr       */
+/*   Created: 2024/10/18 16:10:02 by mcarton           #+#    #+#             */
+/*   Updated: 2024/10/19 16:35:54 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putchar_fd(char c, int fd)
 {
-    size_t i;
-
-    if (argc < 2)
-        return (0);
-    i = 1;
-    while (i < (size_t)argc)
-    {
-        if (is_valid_args(argv[i]) == 0)
-        {
-             printf("❌");
-            return (0);
-        }
-        i ++;
-    }
-    if (has_duplicates(argc, argv) == 1)
-        return (0);
-    printf("✅");
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
+}
+/*
+int	main(void)
+{
+	ft_putchar_fd('A', 1);
+	ft_putchar_fd('\n', 1);
 	return (0);
 }
+*/

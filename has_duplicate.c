@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   has_duplicate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/09 17:05:55 by mcarton          ###   ########.fr       */
+/*   Created: 2025/02/09 16:57:33 by mcarton           #+#    #+#             */
+/*   Updated: 2025/02/09 17:29:42 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int has_duplicates(int argc, char **argv)
 {
     size_t i;
+    size_t j;
 
-    if (argc < 2)
-        return (0);
     i = 1;
     while (i < (size_t)argc)
     {
-        if (is_valid_args(argv[i]) == 0)
+        j = 1;
+        while (j < i)
         {
-             printf("❌");
-            return (0);
+            if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+                return (1);
+            j++;
         }
-        i ++;
+        i++;
     }
-    if (has_duplicates(argc, argv) == 1)
-        return (0);
-    printf("✅");
-	return (0);
+    return (0);
 }

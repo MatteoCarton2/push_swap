@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/09 17:05:55 by mcarton          ###   ########.fr       */
+/*   Created: 2024/10/17 12:04:15 by mcarton           #+#    #+#             */
+/*   Updated: 2024/10/18 16:05:14 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    size_t i;
+	unsigned int	i;
+	char			*resultat;
 
-    if (argc < 2)
-        return (0);
-    i = 1;
-    while (i < (size_t)argc)
-    {
-        if (is_valid_args(argv[i]) == 0)
-        {
-             printf("❌");
-            return (0);
-        }
-        i ++;
-    }
-    if (has_duplicates(argc, argv) == 1)
-        return (0);
-    printf("✅");
-	return (0);
+	i = 0;
+	if (s == NULL || f == NULL)
+		return (NULL);
+	resultat = ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	if (!resultat)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		resultat[i] = (*f)(i, s[i]);
+		i++;
+	}
+	resultat[i] = '\0';
+	return (resultat);
 }
