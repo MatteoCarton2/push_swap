@@ -6,13 +6,13 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:24:54 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/11 19:29:19 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/11 21:22:09 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void ss(t_stack **stack_a, t_stack **stack_b)
+void ss(t_stack **stack_a, t_stack **stack_b) // A CHANGER, PAS ENCORE COMPLET
 {
     if (*stack_a && (*stack_a)->next)
         sa(stack_a);

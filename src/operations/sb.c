@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:04:55 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/11 19:09:59 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/11 21:21:53 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@ void				sb(t_stack **stack_b)
     second->next = first;
     second->previous = NULL;
     *stack_b = second;
+
+    write(1, "sb\n", 3);
 }
