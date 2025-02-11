@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/02/11 15:47:20 by mcarton           #+#    #+#              #
-#    Updated: 2025/02/11 15:54:15 by mcarton          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # Nom de l'exécutable
 NAME = push_swap
 
@@ -24,16 +12,21 @@ LIBFT = $(LIBFT_DIR)/libft.a
 # Dossiers
 SRC_DIR = src
 OBJ_DIR = obj
+OPERATIONS_DIR = $(SRC_DIR)/operations
+OBJ_OPERATIONS_DIR = $(OBJ_DIR)/operations
 
 # Fichiers sources
 SRC_FILES = push_swap.c check_arguments.c stack.c
+OPERATIONS_FILES = sa.c
 
 # Création des chemins vers les fichiers sources et objets
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
-OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
+OPERATIONS_SRCS = $(addprefix $(OPERATIONS_DIR)/, $(OPERATIONS_FILES))
+OBJS = $(patsubst $(SRC_DIR)/%, $(OBJ_DIR)/%, $(SRCS:.c=.o)) \
+       $(patsubst $(OPERATIONS_DIR)/%, $(OBJ_OPERATIONS_DIR)/%, $(OPERATIONS_SRCS:.c=.o))
 
 # Commandes de compilation
-all: $(NAME)
+all: $(OBJ_DIR) $(OBJ_OPERATIONS_DIR) $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
@@ -42,9 +35,18 @@ $(LIBFT):
 	make -C $(LIBFT_DIR)
 
 # Compilation des fichiers objets
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_OPERATIONS_DIR)/%.o: $(OPERATIONS_DIR)/%.c | $(OBJ_OPERATIONS_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Création des dossiers si besoin
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(OBJ_OPERATIONS_DIR): | $(OBJ_DIR)
+	@mkdir -p $(OBJ_OPERATIONS_DIR)
 
 # Nettoyage des fichiers objets
 clean:
