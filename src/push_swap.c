@@ -6,34 +6,36 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/10 17:08:32 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:51:48 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	main(int argc, char **argv)
 {
-	size_t	i;
+	size_t	new_argc;
+	char	**new_argv;
+	t_stack	*stack_a;
 
 	if (argc < 2)
 		return (0);
-	i = 1;
-	while (i < (size_t)argc)
+	if (argc == 2)
+		new_argv = ft_split(argv[1], ' '); // on split si 1 seul argument "7 4 -23"
+	else
+		new_argv = argv + 1; // sinon on garde argv + 1 ???
+	new_argv = check_arguments(argc, new_argv, &new_argc);
+	if (new_argv == NULL)
+		return (0);
+	stack_a = initialize_stack(new_argc, new_argv);
+	if (!stack_a)
 	{
-		if (is_valid_args(argv[i]) == 0)
-		{
-			printf("INVALIDE ❌\n");
-			return (0);
-		}
-		i++;
-	}
-	if (has_duplicates(argc, argv) == 1)
-	{
-		printf("DOUBLON ❌\n");
+		printf("Erreur allocation stack ❌\n");
+		if (argc == 2)
+			free(new_argv);
 		return (0);
 	}
-	printf("VALIDE ✅\n");
-	initialize_stack(argc, argv);
+	if (argc == 2)
+		free(new_argv);
 	return (0);
 }
