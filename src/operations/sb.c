@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   sb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/11 16:04:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/11 18:42:27 by mcarton          ###   ########.fr       */
+/*   Created: 2025/02/11 19:04:55 by mcarton           #+#    #+#             */
+/*   Updated: 2025/02/11 19:09:59 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void				sa(t_stack **stack_a)
+void				sb(t_stack **stack_b)
 {
     t_stack *first;
     t_stack *second;
 
-    if (!(*stack_a) || !(*stack_a)->next)
+    if (!(*stack_b) || !(*stack_b)->next)
         return;
-    first = *stack_a;
+    first = *stack_b;
     second = first->next;
-
+    
     // 🔄 Echange des pointeurs
     first->next = second->next;
     if (first->next)
-        first->next->previous = first; // pour que le 3ème son prévious pointe vers le nouveau 2ème (first)
+        first->next->previous = first; // pour le 3eme
     first->previous = second;
     second->next = first;
     second->previous = NULL;
-    *stack_a = second;
+    *stack_b = second;
 }
