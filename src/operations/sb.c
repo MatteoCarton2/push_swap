@@ -6,13 +6,13 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:04:55 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/11 21:21:53 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/12 11:39:16 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void				sb(t_stack **stack_b)
+void				sb(t_stack **stack_b, int write_or_not)
 {
     t_stack *first;
     t_stack *second;
@@ -30,6 +30,6 @@ void				sb(t_stack **stack_b)
     second->next = first;
     second->previous = NULL;
     *stack_b = second;
-
-    write(1, "sb\n", 3);
+    if (write_or_not == 1)
+        write(1, "sb\n", 3);
 }

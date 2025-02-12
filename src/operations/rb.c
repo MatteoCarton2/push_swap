@@ -6,13 +6,13 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:24:16 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 11:30:59 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/12 11:37:44 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void    rb(t_stack **stack_b)
+void    rb(t_stack **stack_b, int write_or_not)
 {
     t_stack *tmp;
     t_stack *last;
@@ -27,5 +27,6 @@ void    rb(t_stack **stack_b)
     last->next = tmp;
     tmp->previous = last;
     tmp->next = NULL;
-    write (1, "rb\n", 3);
+    if (write_or_not == 1)
+        write (1, "rb\n", 3);
 }

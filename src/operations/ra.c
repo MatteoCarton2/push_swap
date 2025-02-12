@@ -6,13 +6,13 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:06:30 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 11:19:26 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/12 11:37:27 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void    ra(t_stack **stack_a)
+void    ra(t_stack **stack_a, int write_or_not)
 {
     t_stack *tmp;
     t_stack *last;
@@ -27,5 +27,6 @@ void    ra(t_stack **stack_a)
     last->next = tmp; // ajouter tmp (qui contient l'ancien 1er element) à la fin
     tmp->previous = last;
     tmp->next = NULL;
-    write (1, "ra\n", 3);
+    if (write_or_not == 1)
+        write (1, "ra\n", 3);
 }
