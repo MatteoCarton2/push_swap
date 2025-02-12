@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:00:31 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/11 21:23:39 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/12 10:36:44 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void pb(t_stack **stack_a, t_stack **stack_b)
     tmp->next = *stack_b; // Placer tmp au début de stack_b
     if (*stack_b) // même chose qu'au dessus pour la stack a
         (*stack_b)->previous = tmp;
-
+        
+    tmp->previous = NULL; // car tmp = le 1er
     *stack_b = tmp; // Met à jour stack_b avec tmp comme nouveau top
 
     write(1, "pb\n", 3);
