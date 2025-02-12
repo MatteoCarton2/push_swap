@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:00:28 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 21:04:11 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/12 22:02:37 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ void	algorithm(t_stack **stack_a, t_stack **stack_b)
         sa(stack_a, 1); // si la stack contient que 2 éléments faut inverser (forcément en désordre car on a check juste au dessus si c'était déja trié ou non)
     else if (size == 3)
         sort_three(stack_a);
-    //else if (size <= 5) // si c'est 4 ou 5
-        // la fonction pour trier 4 ou 5
+    else if (size <= 5) // si c'est 4 ou 5
+        sort_four_or_five(stack_a, stack_b);
     //else
         // grosse fonction de tri 
 }
 
+// Fonction qui vérifie si la stack est triée
 int is_sorted(t_stack **stack_a)
 {
     t_stack *tmp;
@@ -49,6 +50,7 @@ int is_sorted(t_stack **stack_a)
     return (1);
 }
 
+// Fonction qui retourne la taille de la stack
 int stack_size(t_stack *stack)
 {
     int count = 0;
@@ -87,4 +89,28 @@ void sort_three(t_stack **stack)
         }
         else if (first < second && second > third && first > third)
             rra(stack, 1);
+}
+
+/* L'idée consiste à envoyer les 2 plus petits éléments(ou qu'un 1 seul si 4 
+éléments) dans STACK B, puis trier les 3 éléments restants dans STACK A avec sort_three() 
+avant de mettre dans STACK B */
+void sort_four_or_five(t_stack **stack_a, t_stack **stack_b)
+{
+    int size;
+
+    size = stack_size(*stack_a);
+    if (size == 4)
+    {
+        push_smallest_to_b(stack_a, stack_b);
+        sort_three(stack_a);
+        pa(stack_a, stack_b);
+    }
+    else if (size == 5)
+    {
+        push_smallest_to_b(stack_a, stack_b);
+        push_smallest_to_b(stack_a, stack_b);
+        sort_three(stack_a);
+        pa(stack_a, stack_b);
+        pa(stack_a, stack_b);
+    }
 }

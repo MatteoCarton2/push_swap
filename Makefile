@@ -16,8 +16,8 @@ OPERATIONS_DIR = $(SRC_DIR)/operations
 OBJ_OPERATIONS_DIR = $(OBJ_DIR)/operations
 
 # Fichiers sources
-SRC_FILES = push_swap.c check_arguments.c stack.c
-OPERATIONS_FILES = sa.c
+SRC_FILES = push_swap.c check_arguments.c stack.c algorithm.c utils_algorithm.c
+OPERATIONS_FILES = sa.c sb.c ss.c pa.c pb.c ra.c rb.c rr.c rra.c rrb.c rrr.c
 
 # Création des chemins vers les fichiers sources et objets
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
