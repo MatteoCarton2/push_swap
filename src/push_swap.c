@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/11 15:51:48 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/12 17:52:52 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	size_t	new_argc;
 	char	**new_argv;
 	t_stack	*stack_a;
+	t_stack *stack_b;
 
 	if (argc < 2)
 		return (0);
@@ -37,5 +38,28 @@ int	main(int argc, char **argv)
 	}
 	if (argc == 2)
 		free(new_argv);
+		
+	stack_b = NULL;
+	
+	(void)stack_b;
+	printf("Stack triée ? %d\n", is_sorted(&stack_a));
+	
+	/*// on envoie 3 elements de A vers B pour tester rrb
+    printf("\n--- PB (On envoie 3 elements de A vers B) ---\n");
+    pb(&stack_a, &stack_b);
+    pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+
+    printf("\n--- Avant `rrr()` ---\n");
+    print_stack(stack_a);
+    print_stack(stack_b);
+
+    // Appliquer rrr
+    rrr(&stack_a, &stack_b);
+
+    printf("\n--- Après `rrr()` ---\n");
+    print_stack(stack_a);
+    print_stack(stack_b); */
+
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:21:03 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/11 15:51:39 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/12 17:01:27 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_stack(t_stack *stack)
 			stack->nbr, stack->index, stack->previous, (void *)stack->next);
 		stack = stack->next;
 	}
-	printf("✅ Fin de la stack\n");
+	printf("✅ Fin de la stack\n\n");
 }
 
 t_stack	*add_to_stack(t_stack *first, long nbr)
@@ -43,10 +43,10 @@ t_stack	*add_to_stack(t_stack *first, long nbr)
 
 	new_element = malloc(sizeof(t_stack));
 	if (new_element == NULL)
-		return (first);
+		return (NULL);
 	new_element->nbr = nbr;
-	new_element->previous = NULL;
 	new_element->next = NULL;
+    new_element->previous = NULL;
 	if (first == NULL)
 		return (new_element);
 	tmp = first;
@@ -69,9 +69,10 @@ t_stack	*initialize_stack(int argc, char **argv)
 	while (i < (size_t)argc)
 	{
 		first = add_to_stack(first, ft_atoi(argv[i]));
+        if (first == NULL)
+            return (NULL);
 		i++;
 	}
 	print_stack(first);
-
 	return (first);
 }
