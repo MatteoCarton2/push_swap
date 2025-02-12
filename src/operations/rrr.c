@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   rrr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 11:32:29 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 14:55:49 by mcarton          ###   ########.fr       */
+/*   Created: 2025/02/12 14:54:00 by mcarton           #+#    #+#             */
+/*   Updated: 2025/02/12 14:57:14 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void    rr(t_stack **stack_a, t_stack **stack_b)
+void    rrr(t_stack **stack_a, t_stack **stack_b)
 {
     if (*stack_a && (*stack_a)->next)
-        ra(stack_a, 0);
+        rra(stack_a, 0);
     if (*stack_b && (*stack_b)->next)
-        rb(stack_b, 0);
-    write(1, "rr\n", 3);
+        rrb(stack_b, 0);
+    write (1, "rrr\n", 4);
 }
