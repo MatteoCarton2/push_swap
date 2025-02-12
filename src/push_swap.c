@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 18:07:04 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/12 18:19:15 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 	new_argv = check_arguments(argc, new_argv, &new_argc);
 	if (new_argv == NULL)
 		return (0);
+	
 	stack_a = initialize_stack(new_argc, new_argv);
 	if (!stack_a)
 	{
@@ -40,9 +41,17 @@ int	main(int argc, char **argv)
 		free(new_argv);
 		
 	stack_b = NULL;
+
+	printf("\n--- AVANT ---\n");
+	print_stack(stack_a, 'A');
+    print_stack(stack_b, 'B');
 	
+	printf("\n--- OPERATIONS ---\n");
 	algorithm(&stack_a, &stack_b);
 	
+	printf("\n--- APRES ---\n");
+	print_stack(stack_a, 'A');
+    print_stack(stack_b, 'B');
 	/*// on envoie 3 elements de A vers B pour tester rrb
     printf("\n--- PB (On envoie 3 elements de A vers B) ---\n");
     pb(&stack_a, &stack_b);

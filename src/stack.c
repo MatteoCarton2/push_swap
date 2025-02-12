@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:21:03 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 17:01:27 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/12 18:19:44 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ void	free_stack(t_stack *stack)
 	}
 }
 
-void	print_stack(t_stack *stack)
+void	print_stack(t_stack *stack, char a_or_b)
 {
-	printf("📌 Stack contents:\n");
+	printf("📌 Stack %c\n", a_or_b);
 	while (stack != NULL)
 	{
 		printf("Nbr = %ld et index = %ld | Previous: %p | Next: %p\n",
 			stack->nbr, stack->index, stack->previous, (void *)stack->next);
 		stack = stack->next;
 	}
-	printf("✅ Fin de la stack\n\n");
+	printf("✅ Fin de la stack %c \n\n", a_or_b);
 }
 
 t_stack	*add_to_stack(t_stack *first, long nbr)
@@ -73,6 +73,5 @@ t_stack	*initialize_stack(int argc, char **argv)
             return (NULL);
 		i++;
 	}
-	print_stack(first);
 	return (first);
 }

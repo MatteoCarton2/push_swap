@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:00:28 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 18:07:20 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/12 21:04:11 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,22 @@
 void	algorithm(t_stack **stack_a, t_stack **stack_b)
 {
     (void)stack_b;
-	if (is_sorted(stack_a))
+    int size;
+
+    size = stack_size(*stack_a);
+	if (is_sorted(stack_a)) // check si la stack a de base est déja trié (si oui, rien à faire)
     {
-        printf("La stack est triée\n");
+        printf("La stack est déja triée ✅\n\n");
         return;
     }
-	
+    if (size == 2)
+        sa(stack_a, 1); // si la stack contient que 2 éléments faut inverser (forcément en désordre car on a check juste au dessus si c'était déja trié ou non)
+    else if (size == 3)
+        sort_three(stack_a);
+    //else if (size <= 5) // si c'est 4 ou 5
+        // la fonction pour trier 4 ou 5
+    //else
+        // grosse fonction de tri 
 }
 
 int is_sorted(t_stack **stack_a)
@@ -37,4 +47,44 @@ int is_sorted(t_stack **stack_a)
         tmp = tmp->next;
     }
     return (1);
+}
+
+int stack_size(t_stack *stack)
+{
+    int count = 0;
+
+    while (stack)
+    {
+        count++;
+        stack = stack->next;
+    }
+    return (count);
+}
+
+void sort_three(t_stack **stack)
+{
+    int first;
+    int second;
+    int third;
+
+    first = (*stack)->nbr;
+    second = (*stack)->next->nbr;
+    third = (*stack)->next->next->nbr;
+    
+    if (first > second && second < third && first < third)
+        sa(stack, 1);
+        else if (first > second && second > third)
+        {
+            sa(stack, 1);
+            rra(stack, 1);
+        }
+        else if (first > second && second < third && first > third)
+            ra(stack, 1);
+        else if (first < second && second > third && first < third)
+        {
+            sa(stack, 1);
+            ra(stack, 1);
+        }
+        else if (first < second && second > third && first > third)
+            rra(stack, 1);
 }
