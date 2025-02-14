@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:00:28 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 22:02:37 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/14 10:52:27 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	algorithm(t_stack **stack_a, t_stack **stack_b)
         sort_three(stack_a);
     else if (size <= 5) // si c'est 4 ou 5
         sort_four_or_five(stack_a, stack_b);
-    //else
-        // grosse fonction de tri 
+    else
+        big_sort(stack_a, stack_b);
 }
 
 // Fonction qui vérifie si la stack est triée
@@ -114,3 +114,4 @@ void sort_four_or_five(t_stack **stack_a, t_stack **stack_b)
         pa(stack_a, stack_b);
     }
 }
+

@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 18:19:15 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/14 10:51:02 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	
 	if (argc < 2)
 		return (0);
+	stack_b = NULL;
 	if (argc == 2)
 		new_argv = ft_split(argv[1], ' '); // on split si 1 seul argument "7 4 -23"
 	else
@@ -40,7 +41,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		free(new_argv);
 		
-	stack_b = NULL;
+	
 
 	printf("\n--- AVANT ---\n");
 	print_stack(stack_a, 'A');

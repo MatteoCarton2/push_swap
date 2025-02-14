@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:04:55 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 11:39:16 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/14 11:30:18 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void				sb(t_stack **stack_b, int write_or_not)
     second->next = first;
     second->previous = NULL;
     *stack_b = second;
+    update_index(*stack_b);
     if (write_or_not == 1)
         write(1, "sb\n", 3);
 }

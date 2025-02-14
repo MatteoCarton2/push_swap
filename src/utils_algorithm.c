@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:32:58 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 22:04:26 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/14 11:27:27 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,14 @@ void push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
     move_to_top(stack_a, position);
     pb(stack_a, stack_b);
 } 
+
+void update_index(t_stack *stack)
+{
+    int i = 0;
+    while (stack)
+    {
+        stack->index = i;
+        stack = stack->next;
+        i++;
+    }
+}

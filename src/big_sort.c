@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr.c                                              :+:      :+:    :+:   */
+/*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 14:54:00 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/14 11:50:11 by mcarton          ###   ########.fr       */
+/*   Created: 2025/02/14 10:36:19 by mcarton           #+#    #+#             */
+/*   Updated: 2025/02/14 11:49:34 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
-void    rrr(t_stack **stack_a, t_stack **stack_b)
+void big_sort(t_stack **stack_a, t_stack **stack_b)
 {
-    if (*stack_a && (*stack_a)->next)
-        rra(stack_a, 0);
-    if (*stack_b && (*stack_b)->next)
-        rrb(stack_b, 0);
-    write (1, "rrr\n", 4);
+    push_initial_elements(stack_a, stack_b);
+    
+}
+
+//envoie 2 éléments de la stack a dans la stack b, on réfléchis pas, c'est juste pour avoir un MIN et un MAX dans stack b
+void push_initial_elements(t_stack **stack_a, t_stack **stack_b)
+{
+    pb(stack_a, stack_b);
+    pb(stack_a, stack_b);
 }
