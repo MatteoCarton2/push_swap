@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:17:19 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 22:01:25 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/14 16:24:16 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stddef.h>
 # include <stdio.h>
 
+# ifndef INT_MAX
+#  define INT_MAX 2147483647
+# endif
+
 typedef struct s_stack
 {
 	long			nbr;
@@ -25,18 +29,30 @@ typedef struct s_stack
 	struct s_stack	*previous;
 }					t_stack;
 
-// fonctions pour avoir des args valide
+// PARSING
+
+	// parsing.c
+char				**check_arguments(int argc, char **argv, size_t *new_argc);
 int					is_valid_args(char *str);
 int					has_duplicates(int argc, char **argv);
-char				**check_arguments(int argc, char **argv, size_t *new_argc);
 
-// fonctions pour la gestion de la stack a
-void				print_stack(t_stack *stack, char a_or_b);
+// STACK
+
+	// stack_init.c
 t_stack				*initialize_stack(int argc, char **argv);
-void				free_stack(t_stack *stack);
 t_stack				*add_to_stack(t_stack *first, long nbr);
 
-// fonctions pour les manipulations de la stack a et b
+	// stack_utils.c
+void				free_stack(t_stack *stack);
+void				print_stack(t_stack *stack, char a_or_b);
+void				update_index(t_stack *stack);
+int 				get_min_position(t_stack *stack); // voir si c'est utile ou pas
+int 				stack_size(t_stack *stack);
+
+// OPERATIONS
+
+	// operations.c
+
 void				sa(t_stack **stack_a, int write_or_not);
 void				sb(t_stack **stack_b, int write_or_not);
 void				ss(t_stack **stack_a, t_stack **stack_b);
@@ -49,17 +65,20 @@ void				rra(t_stack **stack_a, int write_or_not);
 void				rrb(t_stack **stack_b, int write_or_not);
 void				rrr(t_stack **stack_a, t_stack **stack_b);
 
-// fonctions de l'algo
+// ALGORITHM
+
+	// algorithm.c
 void				algorithm(t_stack **stack_a, t_stack **stack_b);
 int					is_sorted(t_stack **stack_a);
-int					stack_size(t_stack *stack);
+
+	// small_sort.c
 void				sort_three(t_stack **stack);
 void				sort_four_or_five(t_stack **stack_a, t_stack **stack_b);
+void 				push_smallest_to_b(t_stack **stack_a, t_stack **stack_b);
+void 				move_to_top(t_stack **stack, int position);
 
-// fonctions utilitaires pour l'algo
-
-int					get_min_position(t_stack *stack);
-void				move_to_top(t_stack **stack, int position);
-void				push_smallest_to_b(t_stack **stack_a, t_stack **stack_b);
+	// big_sort.c
+void				big_sort(t_stack **stack_a, t_stack **stack_b);
+void				push_initial_elements(t_stack **stack_a, t_stack **stack_b);
 
 #endif

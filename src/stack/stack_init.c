@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:21:03 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/12 18:19:44 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/14 16:21:08 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-void	free_stack(t_stack *stack)
+t_stack	*initialize_stack(int argc, char **argv)
 {
-	t_stack	*temp;
+	t_stack *first;
+	size_t i;
 
-	while (stack)
-	{
-		temp = stack->next;
-		free(stack);
-		stack = temp;
-	}
-}
+	first = NULL;
 
-void	print_stack(t_stack *stack, char a_or_b)
-{
-	printf("📌 Stack %c\n", a_or_b);
-	while (stack != NULL)
+	i = 0;
+	while (i < (size_t)argc)
 	{
-		printf("Nbr = %ld et index = %ld | Previous: %p | Next: %p\n",
-			stack->nbr, stack->index, stack->previous, (void *)stack->next);
-		stack = stack->next;
+		first = add_to_stack(first, ft_atoi(argv[i]));
+        if (first == NULL)
+            return (NULL);
+		i++;
 	}
-	printf("✅ Fin de la stack %c \n\n", a_or_b);
+	return (first);
 }
 
 t_stack	*add_to_stack(t_stack *first, long nbr)
@@ -55,23 +49,5 @@ t_stack	*add_to_stack(t_stack *first, long nbr)
 	tmp->next = new_element;
 	new_element->previous = tmp;
 	new_element->index = tmp->index + 1;
-	return (first);
-}
-
-t_stack	*initialize_stack(int argc, char **argv)
-{
-	t_stack *first;
-	size_t i;
-
-	first = NULL;
-
-	i = 0;
-	while (i < (size_t)argc)
-	{
-		first = add_to_stack(first, ft_atoi(argv[i]));
-        if (first == NULL)
-            return (NULL);
-		i++;
-	}
 	return (first);
 }

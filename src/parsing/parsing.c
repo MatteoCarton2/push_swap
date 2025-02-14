@@ -1,16 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arguments.c                                  :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 20:44:13 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/11 19:17:15 by mcarton          ###   ########.fr       */
+/*   Created: 2025/02/14 16:02:11 by mcarton           #+#    #+#             */
+/*   Updated: 2025/02/14 16:21:05 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
+
+char **check_arguments(int argc, char **argv, size_t *new_argc)
+{
+    size_t i;
+    
+    i = 0;
+    while (argv[i] != NULL)
+    {
+        if (!is_valid_args(argv[i]))
+        {
+            printf("INVALIDE ❌\n");
+			if (argc == 2)
+				(free(argv));
+            return (NULL);
+        }
+        i++;
+    }
+    *new_argc = i;
+    if (has_duplicates(*new_argc, argv))
+    {
+        printf("DOUBLON ❌\n");
+		if (argc == 2)
+            free(argv);
+        return (NULL);
+    }
+    return (argv);
+}
 
 int	is_valid_args(char *str)
 {
@@ -51,31 +78,4 @@ int has_duplicates(int argc, char **argv)
         i++;
     }
     return (0);
-}
-
-char **check_arguments(int argc, char **argv, size_t *new_argc)
-{
-    size_t i;
-    
-    i = 0;
-    while (argv[i] != NULL)
-    {
-        if (!is_valid_args(argv[i]))
-        {
-            printf("INVALIDE ❌\n");
-			if (argc == 2)
-				(free(argv));
-            return (NULL);
-        }
-        i++;
-    }
-    *new_argc = i;
-    if (has_duplicates(*new_argc, argv))
-    {
-        printf("DOUBLON ❌\n");
-		if (argc == 2)
-            free(argv);
-        return (NULL);
-    }
-    return (argv);
 }

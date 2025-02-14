@@ -6,11 +6,11 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:36:19 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/14 11:49:34 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/14 16:20:52 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void big_sort(t_stack **stack_a, t_stack **stack_b)
 {

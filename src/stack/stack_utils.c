@@ -1,16 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_algorithm.c                                  :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 21:32:58 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/14 11:27:27 by mcarton          ###   ########.fr       */
+/*   Created: 2025/02/10 13:21:03 by mcarton           #+#    #+#             */
+/*   Updated: 2025/02/14 16:21:12 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
+
+void	free_stack(t_stack *stack)
+{
+	t_stack	*temp;
+
+	while (stack)
+	{
+		temp = stack->next;
+		free(stack);
+		stack = temp;
+	}
+}
+
+void	print_stack(t_stack *stack, char a_or_b)
+{
+	printf("📌 Stack %c\n", a_or_b);
+	while (stack != NULL)
+	{
+		printf("Nbr = %ld et index = %ld | Previous: %p | Next: %p\n",
+			stack->nbr, stack->index, stack->previous, (void *)stack->next);
+		stack = stack->next;
+	}
+	printf("✅ Fin de la stack %c \n\n", a_or_b);
+}
+
+void update_index(t_stack *stack)
+{
+    int i = 0;
+    while (stack)
+    {
+        stack->index = i;
+        stack = stack->next;
+        i++;
+    }
+}
 
 // Retourne l'index du plus petit élément dans la pile
 int get_min_position(t_stack *stack)
@@ -37,42 +72,15 @@ int get_min_position(t_stack *stack)
     return (position);
 }
 
-// Déplace un élément en haut de la pile
-void move_to_top(t_stack **stack, int position)
+// Fonction qui retourne la taille de la stack
+int stack_size(t_stack *stack)
 {
-    int size;
-    
-    size = stack_size(*stack);
-    if (position <= size / 2)
-    {
-        while (position--)
-            ra(stack, 1);
-    }
-    else
-    {
-        position = size - position;
-        while (position--)
-            rra(stack, 1);
-    }
-}
+    int count = 0;
 
-// Envoie le plus petit élément de la stack a vers la stack b
-void push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
-{
-    int position;
-
-    position = get_min_position(*stack_a);
-    move_to_top(stack_a, position);
-    pb(stack_a, stack_b);
-} 
-
-void update_index(t_stack *stack)
-{
-    int i = 0;
     while (stack)
     {
-        stack->index = i;
+        count++;
         stack = stack->next;
-        i++;
     }
+    return (count);
 }
