@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:00:28 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/14 16:20:48 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/14 16:29:39 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	algorithm(t_stack **stack_a, t_stack **stack_b)
         return;
     }
     if (size == 2)
-        sa(stack_a, 1); // si la stack contient que 2 éléments faut inverser (forcément en désordre car on a check juste au dessus si c'était déja trié ou non)
+        sa(stack_a, 1); /* si la stack contient que 2 éléments faut inverser (forcément en désordre car on a check juste au dessus si c'était déja trié ou non) */ 
     else if (size == 3)
         sort_three(stack_a);
     else if (size <= 5) // si c'est 4 ou 5
@@ -33,17 +33,17 @@ void	algorithm(t_stack **stack_a, t_stack **stack_b)
         big_sort(stack_a, stack_b);
 }
 
-// Fonction qui vérifie si la stack est triée
+/* Fonction qui vérifie si la stack est triée */
 int is_sorted(t_stack **stack_a)
 {
     t_stack *tmp;
 
-    if (!(*stack_a) || !(*stack_a)->next) // si la stack est vide ou qu'elle a que 1 élément, elle est d'office trié
+    if (!(*stack_a) || !(*stack_a)->next) /* si la stack est vide ou qu'elle a que 1 élément, elle est d'office trié */ 
         return (1);
     tmp = *stack_a;
     while(tmp->next != NULL)
     {
-        if (tmp->nbr > tmp->next->nbr) // si le nombre avant est plus grand, c'est que c'est pas trié "7 2"
+        if (tmp->nbr > tmp->next->nbr) /* si le nombre avant est plus grand, c'est que c'est pas trié "7 2" */ 
             return (0);
         tmp = tmp->next;
     }
