@@ -6,37 +6,42 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 16:14:21 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/14 16:27:37 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/02/14 17:29:24 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	sort_three(t_stack **stack)
+void	sort_three(t_stack **stack_a)
 {
-	int	first;
-	int	second;
-	int	third;
+    t_stack	*biggest_node;
 
-	first = (*stack)->nbr;
-	second = (*stack)->next->nbr;
-	third = (*stack)->next->next->nbr;
-	if (first > second && second < third && first < third)
-		sa(stack, 1);
-	else if (first > second && second > third)
+    biggest_node = find_max(*stack_a);
+    if (biggest_node == *stack_a)
+        ra(stack_a, 1);
+    else if ((*stack_a)->next == biggest_node)
+        rra(stack_a, 1);
+    if ((*stack_a)->nbr > (*stack_a)->next->nbr)
+        sa(stack_a, 1);
+}
+
+t_stack	*find_max(t_stack *stack)
+{
+	long			max;
+	t_stack	*max_elem;
+	if (!stack)
+		return (NULL);
+	max = LONG_MIN; 
+	while (stack)
 	{
-		sa(stack, 1);
-		rra(stack, 1);
+		if (stack->nbr > max) 
+		{
+			max = stack->nbr;
+			max_elem = stack;
+		}
+		stack = stack->next;
 	}
-	else if (first > second && second < third && first > third)
-		ra(stack, 1);
-	else if (first < second && second > third && first < third)
-	{
-		sa(stack, 1);
-		ra(stack, 1);
-	}
-	else if (first < second && second > third && first > third)
-		rra(stack, 1);
+	return (max_elem);
 }
 
 /* L'idée consiste à envoyer les 2 plus petits éléments(ou qu'un 1 seul si 4
