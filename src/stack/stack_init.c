@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:21:03 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 15:45:27 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:16:42 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 t_stack	*initialize_stack(int argc, char **argv)
 {
-	t_stack	*first;
-	size_t	i;
+	t_stack *first;
+	size_t i;
 
 	first = NULL;
+
 	i = 0;
 	while (i < (size_t)argc)
 	{
 		first = add_to_stack(first, ft_atoi(argv[i]));
-		if (first == NULL)
-			return (NULL);
+        if (first == NULL)
+            return (NULL);
 		i++;
 	}
 	return (first);
@@ -38,8 +39,9 @@ t_stack	*add_to_stack(t_stack *first, long nbr)
 	if (new_element == NULL)
 		return (NULL);
 	new_element->nbr = nbr;
+	new_element->order = -1;
 	new_element->next = NULL;
-	new_element->previous = NULL;
+    new_element->previous = NULL;
 	if (first == NULL)
 		return (new_element);
 	tmp = first;

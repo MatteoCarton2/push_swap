@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 16:02:11 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 14:51:55 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:19:41 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**check_arguments(int argc, char **argv, size_t *new_argc)
 		i++;
 	}
 	*new_argc = i;
-	if (has_duplicates(*new_argc, argv))
+	if (has_duplicates(*new_argc, argv) == 1)
 	{
 		ft_putstr_fd("Error\n", 2);
 		if (argc == 2)
@@ -37,6 +37,31 @@ char	**check_arguments(int argc, char **argv, size_t *new_argc)
 		return (NULL);
 	}
 	return (argv);
+}
+
+static int	is_int_overflow(char *str)
+{
+	long	value;
+	int		sign;
+	int		i;
+
+	i = 0;
+	sign = 1;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	value = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		value = value * 10 + (str[i] - '0');
+		if ((sign == 1 && value > INT_MAX) || (sign == -1 && - value < INT_MIN))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int	is_valid_args(char *str)
@@ -78,31 +103,6 @@ int	has_duplicates(int argc, char **argv)
 				return (1);
 			j++;
 		}
-		i++;
-	}
-	return (0);
-}
-
-int	is_int_overflow(char *str)
-{
-	long	value;
-	int		sign;
-	int		i;
-
-	i = 0;
-	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	value = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		value = value * 10 + (str[i] - '0');
-		if ((sign == 1 && value > INT_MAX) || (sign == -1 && - value < INT_MIN))
-			return (1);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:00:28 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 15:38:03 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/08 18:06:21 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,39 @@
 
 void	algorithm(t_stack **stack_a, t_stack **stack_b)
 {
-	int	size;
+    int size;
 
-	if (!stack_a || !*stack_a)
-		return ;
-	size = stack_size(*stack_a);
-	if (is_sorted(stack_a))
-		return ;
-	if (size == 2)
-		sa(stack_a, 1);
-	else if (size == 3)
-		sort_three(stack_a);
-	else if (size <= 5)
-		sort_four_or_five(stack_a, stack_b);
-	else
-		big_sort(stack_a, stack_b);
+    if (!stack_a || !*stack_a)
+        return;
+    
+    size = stack_size(*stack_a);
+    
+	if (is_sorted(stack_a)) // check si la stack a de base est déja trié (si oui, rien à faire)
+        return;
+    
+    if (size == 2)
+        sa(stack_a, 1); /* si la stack contient que 2 éléments faut inverser (forcément en désordre car on a check juste au dessus si c'était déja trié ou non) */ 
+    else if (size == 3)
+        sort_three(stack_a);
+    else if (size <= 5) // si c'est 4 ou 5
+        sort_four_or_five(stack_a, stack_b);
+    else
+        big_sort(stack_a, stack_b);
 }
 
-/* si la stack est vide ou qu'elle a que 1 élément, elle est d'office trié */
-int	is_sorted(t_stack **stack_a)
+/* Fonction qui vérifie si la stack est triée */
+int is_sorted(t_stack **stack_a)
 {
-	t_stack	*tmp;
+    t_stack *tmp;
 
-	if (!(*stack_a) || !(*stack_a)->next)
-		return (1);
-	tmp = *stack_a;
-	while (tmp->next != NULL)
-	{
-		if (tmp->nbr > tmp->next->nbr)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
+    if (!(*stack_a) || !(*stack_a)->next) /* si la stack est vide ou qu'elle a que 1 élément, elle est d'office trié */ 
+        return (1);
+    tmp = *stack_a;
+    while(tmp->next != NULL)
+    {
+        if (tmp->nbr > tmp->next->nbr) /* si le nombre avant est plus grand, c'est que c'est pas trié "7 2" */ 
+            return (0);
+        tmp = tmp->next;
+    }
+    return (1);
 }

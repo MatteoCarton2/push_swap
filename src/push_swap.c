@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 15:40:44 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:20:25 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int argc, char **argv)
 	char	**new_argv;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-
 	if (argc < 2)
 		return (0);
 	if (argc == 2)
