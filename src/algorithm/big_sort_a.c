@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 18:55:49 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 18:10:13 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 19:15:45 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	find_min_unranked(t_stack *stack)
 	t_stack	*current;
 	int		min;
 
+	if (!stack)
+		return (0);
 	current = stack;
 	min = INT_MAX;
 	while (current)
@@ -34,6 +36,8 @@ static void	assign_orders(t_stack **stack, int size)
 	int		min;
 	int		order;
 
+	if (!stack)
+		return ;
 	order = 1;
 	while (order <= size)
 	{
@@ -55,6 +59,8 @@ static void	assign_orders(t_stack **stack, int size)
 static void	process_chunk_element(t_stack **stack_a, t_stack **stack_b,
 		int *chunk_limit, int chunk_size)
 {
+	if (!stack_a || !stack_b || !chunk_limit)
+		return ;
 	if ((*stack_a)->order <= *chunk_limit)
 	{
 		pb(stack_a, stack_b);
@@ -71,6 +77,8 @@ static void	big_sort_part1(t_stack **stack_a, t_stack **stack_b, int size)
 	int	chunk_limit;
 	int	chunk_size;
 
+	if (!stack_a || !stack_b)
+		return ;
 	if (size <= 100)
 		chunk_size = size * 0.15;
 	else
@@ -86,6 +94,8 @@ void	big_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
 
+	if (!stack_a || !stack_b)
+		return ;
 	size = stack_size(*stack_a);
 	assign_orders(stack_a, size);
 	big_sort_part1(stack_a, stack_b, size);
