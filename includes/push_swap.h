@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:17:19 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/14 16:24:16 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:08:17 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 # include <stddef.h>
 # include <stdio.h>
+# include <limits.h>
 
 # ifndef INT_MAX
 #  define INT_MAX 2147483647
@@ -44,15 +45,11 @@ t_stack				*add_to_stack(t_stack *first, long nbr);
 
 	// stack_utils.c
 void				free_stack(t_stack *stack);
-void				print_stack(t_stack *stack, char a_or_b);
 void				update_index(t_stack *stack);
-int 				get_min_position(t_stack *stack); // voir si c'est utile ou pas
+int 				get_min_position(t_stack *stack);
 int 				stack_size(t_stack *stack);
 
 // OPERATIONS
-
-	// operations.c
-
 void				sa(t_stack **stack_a, int write_or_not);
 void				sb(t_stack **stack_b, int write_or_not);
 void				ss(t_stack **stack_a, t_stack **stack_b);
