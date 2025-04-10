@@ -6,11 +6,21 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 16:20:25 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:46:18 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	process_stacks(t_stack *stack_a, t_stack *stack_b,
+					char **new_argv, int argc)
+{
+	algorithm(&stack_a, &stack_b);
+	if (argc == 2)
+		free(new_argv);
+	free_stack(stack_a);
+	free_stack(stack_b);
+}
 
 int	main(int argc, char **argv)
 {
@@ -18,6 +28,7 @@ int	main(int argc, char **argv)
 	char	**new_argv;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+
 	if (argc < 2)
 		return (0);
 	if (argc == 2)
@@ -35,11 +46,7 @@ int	main(int argc, char **argv)
 			free(new_argv);
 		return (0);
 	}
-	if (argc == 2)
-		free(new_argv);
 	stack_b = NULL;
-	algorithm(&stack_a, &stack_b);
-	free_stack(stack_a);
-	free_stack(stack_b);
+	process_stacks(stack_a, stack_b, new_argv, argc);
 	return (0);
 }
