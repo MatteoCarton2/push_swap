@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 13:38:34 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:40:44 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ int	main(int argc, char **argv)
 		free(new_argv);
 	stack_b = NULL;
 	algorithm(&stack_a, &stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }

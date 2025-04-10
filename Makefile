@@ -24,7 +24,7 @@ OBJ_STACK_DIR = $(OBJ_DIR)/stack
 
 # Fichiers sources
 SRC_FILES = push_swap.c 
-ALGO_FILES = algorithm.c big_sort.c small_sort.c
+ALGO_FILES = algorithm.c small_sort.c algo_utils.c big_sort_a.c big_sort_b.c
 OPERATIONS_FILES = sa.c sb.c ss.c pa.c pb.c ra.c rb.c rr.c rra.c rrb.c rrr.c
 PARSING_FILES = parsing.c
 STACK_FILES = stack_init.c stack_utils.c

@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 16:14:21 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/14 17:29:24 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:39:38 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,18 @@
 
 void	sort_three(t_stack **stack_a)
 {
-    t_stack	*biggest_node;
+	t_stack	*biggest_node;
+	t_stack	*min_node;
 
-    biggest_node = find_max(*stack_a);
-    if (biggest_node == *stack_a)
-        ra(stack_a, 1);
-    else if ((*stack_a)->next == biggest_node)
-        rra(stack_a, 1);
-    if ((*stack_a)->nbr > (*stack_a)->next->nbr)
-        sa(stack_a, 1);
+	find_min_max(*stack_a, &min_node, &biggest_node);
+	if (biggest_node == *stack_a)
+		ra(stack_a, 1);
+	else if ((*stack_a)->next == biggest_node)
+		rra(stack_a, 1);
+	if ((*stack_a)->nbr > (*stack_a)->next->nbr)
+		sa(stack_a, 1);
 }
 
-t_stack	*find_max(t_stack *stack)
-{
-	long			max;
-	t_stack	*max_elem;
-	if (!stack)
-		return (NULL);
-	max = LONG_MIN; 
-	while (stack)
-	{
-		if (stack->nbr > max) 
-		{
-			max = stack->nbr;
-			max_elem = stack;
-		}
-		stack = stack->next;
-	}
-	return (max_elem);
-}
-
-/* L'idée consiste à envoyer les 2 plus petits éléments(ou qu'un 1 seul si 4
-éléments) dans STACK B,
-	puis trier les 3 éléments restants dans STACK A avec sort_three()
-avant de mettre dans STACK B */
 void	sort_four_or_five(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
@@ -69,7 +47,6 @@ void	sort_four_or_five(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-// Envoie le plus petit élément de la stack a vers la stack b
 void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 {
 	int	position;
@@ -79,7 +56,6 @@ void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 	pb(stack_a, stack_b);
 }
 
-// Déplace un élément en haut de la pile
 void	move_to_top(t_stack **stack, int position)
 {
 	int	size;

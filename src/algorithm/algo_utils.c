@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_sort.c                                         :+:      :+:    :+:   */
+/*   algo_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 10:36:19 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/14 16:28:46 by mcarton          ###   ########.fr       */
+/*   Created: 2025/04/07 04:31:06 by mcarton           #+#    #+#             */
+/*   Updated: 2025/04/10 15:36:36 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	big_sort(t_stack **stack_a, t_stack **stack_b)
+void	find_min_max(t_stack *stack, t_stack **min, t_stack **max)
 {
-	push_initial_elements(stack_a, stack_b);
-}
+	t_stack	*current;
 
-/* Envoie 2 éléments de la stack a dans la stack b, on réfléchis pas,
-	c'est juste pour avoir un MIN et un MAX dans stack b */
-void	push_initial_elements(t_stack **stack_a, t_stack **stack_b)
-{
-	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
+	if (!stack)
+	{
+		*min = NULL;
+		*max = NULL;
+		return ;
+	}
+	*min = stack;
+	*max = stack;
+	current = stack->next;
+	while (current)
+	{
+		if (current->nbr < (*min)->nbr)
+			*min = current;
+		if (current->nbr > (*max)->nbr)
+			*max = current;
+		current = current->next;
+	}
 }

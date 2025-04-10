@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:04:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 15:09:02 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:35:14 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	sa(t_stack **stack_a, int write_or_not)
 	second->next = first;
 	second->previous = NULL;
 	*stack_a = second;
-	update_index(*stack_a);
 	if (write_or_not == 1)
 		write(1, "sa\n", 3);
 }

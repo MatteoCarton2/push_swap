@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:06:30 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 14:57:37 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:34:58 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ra(t_stack **stack_a, int write_or_not)
 	last->next = tmp;
 	tmp->previous = last;
 	tmp->next = NULL;
-	update_index(*stack_a);
 	if (write_or_not == 1)
 		write(1, "ra\n", 3);
 }
