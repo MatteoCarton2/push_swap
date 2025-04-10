@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:17:19 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 17:23:51 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 17:54:49 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 # include "../libft/libft.h"
 # include <limits.h>
 # include <stddef.h>
-
-# ifndef INT_MAX
-#  define INT_MAX 2147483647
-# endif
 
 typedef struct s_stack
 {
