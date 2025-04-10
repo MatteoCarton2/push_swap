@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 16:14:21 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 16:51:07 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:07:27 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,29 @@ static void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 	position = get_min_position(*stack_a);
 	move_to_top(stack_a, position);
 	pb(stack_a, stack_b);
+}
+
+static void	find_min_max(t_stack *stack, t_stack **min, t_stack **max)
+{
+	t_stack	*current;
+
+	if (!stack)
+	{
+		*min = NULL;
+		*max = NULL;
+		return ;
+	}
+	*min = stack;
+	*max = stack;
+	current = stack->next;
+	while (current)
+	{
+		if (current->nbr < (*min)->nbr)
+			*min = current;
+		if (current->nbr > (*max)->nbr)
+			*max = current;
+		current = current->next;
+	}
 }
 
 void	sort_three(t_stack **stack_a)

@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 17:33:33 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 17:59:33 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	free_split(char **tab)
 	free(tab);
 }
 
-static void	process_stacks(t_stack *stack_a, t_stack *stack_b,
-					char **new_argv, int argc)
+static void	process_stacks(t_stack *stack_a, t_stack *stack_b, char **new_argv,
+		int argc)
 {
 	algorithm(&stack_a, &stack_b);
 	if (argc == 2)

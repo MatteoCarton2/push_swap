@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 16:02:11 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 17:34:52 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:18:55 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,6 @@ static void	free_split_argv(char **tab)
 		i++;
 	}
 	free(tab);
-}
-
-char	**check_arguments(int argc, char **argv, size_t *new_argc)
-{
-	size_t	i;
-
-	i = 0;
-	while (argv[i] != NULL)
-	{
-		if (!is_valid_args(argv[i]))
-		{
-			ft_putstr_fd("Error\n", 2);
-			if (argc == 2)
-				free_split_argv(argv);
-			return (NULL);
-		}
-		i++;
-	}
-	*new_argc = i;
-	if (has_duplicates(*new_argc, argv) == 1)
-	{
-		ft_putstr_fd("Error\n", 2);
-		if (argc == 2)
-			free_split_argv(argv);
-		return (NULL);
-	}
-	return (argv);
 }
 
 static int	is_int_overflow(char *str)
@@ -77,7 +50,7 @@ static int	is_int_overflow(char *str)
 	return (0);
 }
 
-int	is_valid_args(char *str)
+static int	is_valid_args(char *str)
 {
 	size_t	i;
 
@@ -101,7 +74,7 @@ int	is_valid_args(char *str)
 	return (1);
 }
 
-int	has_duplicates(int argc, char **argv)
+static int	has_duplicates(int argc, char **argv)
 {
 	size_t	i;
 	size_t	j;
@@ -119,4 +92,31 @@ int	has_duplicates(int argc, char **argv)
 		i++;
 	}
 	return (0);
+}
+
+char	**check_arguments(int argc, char **argv, size_t *new_argc)
+{
+	size_t	i;
+
+	i = 0;
+	while (argv[i] != NULL)
+	{
+		if (!is_valid_args(argv[i]))
+		{
+			ft_putstr_fd("Error\n", 2);
+			if (argc == 2)
+				free_split_argv(argv);
+			return (NULL);
+		}
+		i++;
+	}
+	*new_argc = i;
+	if (has_duplicates(*new_argc, argv) == 1)
+	{
+		ft_putstr_fd("Error\n", 2);
+		if (argc == 2)
+			free_split_argv(argv);
+		return (NULL);
+	}
+	return (argv);
 }

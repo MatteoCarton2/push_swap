@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:17:19 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 17:54:49 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:11:54 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ typedef struct s_stack
 
 // parsing.c
 char				**check_arguments(int argc, char **argv, size_t *new_argc);
-int					is_valid_args(char *str);
-int					has_duplicates(int argc, char **argv);
 
 // STACK
 
@@ -64,7 +62,6 @@ void				rrr(t_stack **stack_a, t_stack **stack_b);
 
 // algorithm.c
 void				algorithm(t_stack **stack_a, t_stack **stack_b);
-int					is_sorted(t_stack **stack_a);
 
 // small_sort.c
 void				sort_three(t_stack **stack);
@@ -73,17 +70,8 @@ void				move_to_top(t_stack **stack, int position);
 
 // big_sort_a.c
 void				big_sort(t_stack **stack_a, t_stack **stack_b);
-void				big_sort_part1(t_stack **stack_a, t_stack **stack_b,
-						int size);
-void				assign_orders(t_stack **stack, int size);
-void				process_chunk_element(t_stack **stack_a, t_stack **stack_b,
-						int *chunk_limit, int chunk_size);
 
 // big_sort_b.c1
 void				big_sort_part2(t_stack **stack_a, t_stack **stack_b);
-void				move_max_to_top(t_stack **stack_a, t_stack **stack_b);
-
-// algo_utils.c
-void				find_min_max(t_stack *stack, t_stack **min, t_stack **max);
 
 #endif

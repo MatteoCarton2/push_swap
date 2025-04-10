@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 18:55:49 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 16:50:32 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:10:13 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	find_min_unranked(t_stack *stack)
 	return (min);
 }
 
-void	assign_orders(t_stack **stack, int size)
+static void	assign_orders(t_stack **stack, int size)
 {
 	t_stack	*current;
 	int		min;
@@ -52,7 +52,7 @@ void	assign_orders(t_stack **stack, int size)
 	}
 }
 
-void	process_chunk_element(t_stack **stack_a, t_stack **stack_b,
+static void	process_chunk_element(t_stack **stack_a, t_stack **stack_b,
 		int *chunk_limit, int chunk_size)
 {
 	if ((*stack_a)->order <= *chunk_limit)
@@ -66,7 +66,7 @@ void	process_chunk_element(t_stack **stack_a, t_stack **stack_b,
 		ra(stack_a, 1);
 }
 
-void	big_sort_part1(t_stack **stack_a, t_stack **stack_b, int size)
+static void	big_sort_part1(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	int	chunk_limit;
 	int	chunk_size;

@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 18:59:00 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 16:50:42 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:11:28 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	find_direction(t_stack *stack, int target_order, int size)
 		return (-1);
 }
 
-void	move_max_to_top(t_stack **stack_a, t_stack **stack_b)
+static void	move_max_to_top(t_stack **stack_a, t_stack **stack_b)
 {
 	int	max_order;
 	int	direction;
