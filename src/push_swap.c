@@ -6,18 +6,31 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:12:40 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 16:46:18 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 17:33:33 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	free_split(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 static void	process_stacks(t_stack *stack_a, t_stack *stack_b,
 					char **new_argv, int argc)
 {
 	algorithm(&stack_a, &stack_b);
 	if (argc == 2)
-		free(new_argv);
+		free_split(new_argv);
 	free_stack(stack_a);
 	free_stack(stack_b);
 }
@@ -43,7 +56,7 @@ int	main(int argc, char **argv)
 	{
 		ft_putstr_fd("Error\n", 2);
 		if (argc == 2)
-			free(new_argv);
+			free_split(new_argv);
 		return (0);
 	}
 	stack_b = NULL;

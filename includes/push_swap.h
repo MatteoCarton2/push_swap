@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:17:19 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 16:51:33 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 17:23:51 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void				assign_orders(t_stack **stack, int size);
 void				process_chunk_element(t_stack **stack_a, t_stack **stack_b,
 						int *chunk_limit, int chunk_size);
 
-// big_sort_b.c
+// big_sort_b.c1
 void				big_sort_part2(t_stack **stack_a, t_stack **stack_b);
 void				move_max_to_top(t_stack **stack_a, t_stack **stack_b);
 

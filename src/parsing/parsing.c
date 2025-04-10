@@ -6,11 +6,24 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 16:02:11 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 16:19:41 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 17:34:52 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+static void	free_split_argv(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 char	**check_arguments(int argc, char **argv, size_t *new_argc)
 {
@@ -23,7 +36,7 @@ char	**check_arguments(int argc, char **argv, size_t *new_argc)
 		{
 			ft_putstr_fd("Error\n", 2);
 			if (argc == 2)
-				(free(argv));
+				free_split_argv(argv);
 			return (NULL);
 		}
 		i++;
@@ -33,7 +46,7 @@ char	**check_arguments(int argc, char **argv, size_t *new_argc)
 	{
 		ft_putstr_fd("Error\n", 2);
 		if (argc == 2)
-			free(argv);
+			free_split_argv(argv);
 		return (NULL);
 	}
 	return (argv);
