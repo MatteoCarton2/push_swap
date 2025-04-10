@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:21:03 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 13:32:37 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:53:26 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_stack	*initialize_stack(int argc, char **argv)
 
 t_stack	*add_to_stack(t_stack *first, long nbr)
 {
-	t_stack *new_element;
-	t_stack *tmp;
+	t_stack	*new_element;
+	t_stack	*tmp;
 
 	new_element = malloc(sizeof(t_stack));
 	if (new_element == NULL)
