@@ -6,13 +6,13 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 18:59:00 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/08 19:03:29 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:50:42 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	find_max_order(t_stack *stack)
+static int	find_max_order(t_stack *stack)
 {
 	int		max_order;
 	t_stack	*current;
@@ -30,7 +30,7 @@ int	find_max_order(t_stack *stack)
 	return (max_order);
 }
 
-int	find_direction(t_stack *stack, int target_order, int size)
+static int	find_direction(t_stack *stack, int target_order, int size)
 {
 	int		position;
 	t_stack	*current;

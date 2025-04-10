@@ -6,11 +6,20 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 16:14:21 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 16:35:36 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:51:07 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+static void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
+{
+	int	position;
+
+	position = get_min_position(*stack_a);
+	move_to_top(stack_a, position);
+	pb(stack_a, stack_b);
+}
 
 void	sort_three(t_stack **stack_a)
 {
@@ -45,15 +54,6 @@ void	sort_four_or_five(t_stack **stack_a, t_stack **stack_b)
 		pa(stack_a, stack_b);
 		pa(stack_a, stack_b);
 	}
-}
-
-void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
-{
-	int	position;
-
-	position = get_min_position(*stack_a);
-	move_to_top(stack_a, position);
-	pb(stack_a, stack_b);
 }
 
 void	move_to_top(t_stack **stack, int position)

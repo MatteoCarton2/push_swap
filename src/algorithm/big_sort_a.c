@@ -6,13 +6,13 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 18:55:49 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/08 19:03:26 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:50:32 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	find_min_unranked(t_stack *stack)
+static int	find_min_unranked(t_stack *stack)
 {
 	t_stack	*current;
 	int		min;
