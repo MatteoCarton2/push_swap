@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:17:19 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 18:11:54 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:49:44 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char				**check_arguments(int argc, char **argv, size_t *new_argc);
 
 // stack_init.c
 t_stack				*initialize_stack(int argc, char **argv);
-t_stack				*add_to_stack(t_stack *first, long nbr);
 
 // stack_utils.c
 void				free_stack(t_stack *stack);
