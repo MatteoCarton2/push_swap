@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:21:03 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 14:53:26 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:45:27 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ t_stack	*add_to_stack(t_stack *first, long nbr)
 		tmp = tmp->next;
 	tmp->next = new_element;
 	new_element->previous = tmp;
-	new_element->index = tmp->index + 1;
 	return (first);
 }

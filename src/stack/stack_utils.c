@@ -6,7 +6,7 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:21:03 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 14:53:15 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:45:51 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,6 @@ void	free_stack(t_stack *stack)
 		temp = stack->next;
 		free(stack);
 		stack = temp;
-	}
-}
-
-void	update_index(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (stack)
-	{
-		stack->index = i;
-		stack = stack->next;
-		i++;
 	}
 }
 
