@@ -6,28 +6,29 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:06:30 by mcarton           #+#    #+#             */
-/*   Updated: 2025/02/14 11:29:04 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:57:37 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void    ra(t_stack **stack_a, int write_or_not)
+void	ra(t_stack **stack_a, int write_or_not)
 {
-    t_stack *tmp;
-    t_stack *last;
-    if (!(*stack_a) || !(*stack_a)->next)
-        return;
-    tmp = *stack_a;
-    last = *stack_a;
-    *stack_a = (*stack_a)->next; // avance stack_a au 2eme element (qui sera désormais le 1er)
-    (*stack_a)->previous = NULL; // comme c'est le nouveau 1er, pas de previous
-    while (last->next != NULL) // aller au dernier element
-        last = last->next;
-    last->next = tmp; // ajouter tmp (qui contient l'ancien 1er element) à la fin
-    tmp->previous = last;
-    tmp->next = NULL;
-    update_index(*stack_a);
-    if (write_or_not == 1)
-        write (1, "ra\n", 3);
+	t_stack	*tmp;
+	t_stack	*last;
+
+	if (!(*stack_a) || !(*stack_a)->next)
+		return ;
+	tmp = *stack_a;
+	last = *stack_a;
+	*stack_a = (*stack_a)->next;
+	(*stack_a)->previous = NULL;
+	while (last->next != NULL)
+		last = last->next;
+	last->next = tmp;
+	tmp->previous = last;
+	tmp->next = NULL;
+	update_index(*stack_a);
+	if (write_or_not == 1)
+		write(1, "ra\n", 3);
 }

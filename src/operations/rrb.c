@@ -14,8 +14,8 @@
 
 void	rrb(t_stack **stack_b, int write_or_not)
 {
-	t_stack *last;
-	t_stack *second_last;
+	t_stack	*last;
+	t_stack	*second_last;
 
 	if (!(*stack_b) || !(*stack_b)->next)
 		return ;
