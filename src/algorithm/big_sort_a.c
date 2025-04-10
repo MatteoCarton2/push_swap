@@ -6,13 +6,13 @@
 /*   By: mcarton <mcarton@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 18:55:49 by mcarton           #+#    #+#             */
-/*   Updated: 2025/04/10 19:29:50 by mcarton          ###   ########.fr       */
+/*   Updated: 2025/04/10 19:55:31 by mcarton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	find_min_unranked(t_stack *stack)
+static int	find_min_without_order(t_stack *stack)
 {
 	t_stack	*current;
 	int		min;
@@ -41,7 +41,7 @@ static void	assign_orders(t_stack **stack, int size)
 	order = 1;
 	while (order <= size)
 	{
-		min = find_min_unranked(*stack);
+		min = find_min_without_order(*stack);
 		current = *stack;
 		while (current)
 		{
@@ -56,6 +56,9 @@ static void	assign_orders(t_stack **stack, int size)
 	}
 }
 
+/* Processes one element from stack A
+If element's order is within current chunk limit, pushes it to stack B
+Otherwise, rotates it to the bottom of stack A*/
 static void	process_chunk_element(t_stack **stack_a, t_stack **stack_b,
 		int *chunk_limit, int chunk_size)
 {
@@ -72,6 +75,8 @@ static void	process_chunk_element(t_stack **stack_a, t_stack **stack_b,
 		ra(stack_a, 1);
 }
 
+/* Divides elements into chunks and moves them from stack A to stack B
+Optimizes placement in stack B to prepare for my algo part 2*/
 static void	big_sort_part1(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	int	chunk_limit;
